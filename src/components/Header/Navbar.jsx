@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {signOut} from 'firebase/auth'
+import auth from "../../Firebase/firebase.config";
+import Loading from "../Shared/Loading";
 function Navbar() {
-
+    const [user, loading, error] = useAuthState(auth);
     const [toggle, setToggle] = useState(false);
     return (
         <nav
             className={`lg:sm:px-[80px] px-[10%] shadow-md flex justify-between items-center py-[15px] relative sm:py-3`}
         >
+            {
+                loading && <Loading/>
+            }
             <div className="logo">
                 <Link to="/" className='cursor-pointer'>
                     <h3 className="text-xl ">I/W Management</h3>
@@ -21,9 +28,11 @@ function Navbar() {
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/inventory">
                     Manage Inventory
                 </NavLink>
-                <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
+                {
+                    user ? <button className='btn bg-blue-800 text-white' onClick={() => signOut(auth)}>Log Out </button> : <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
                     Login
                 </Link>
+                }
             </div>
 
             <div className={`block z-[100] md:hidden cursor-pointer hover:text-[#00fff0] transition-all`} onClick={() => setToggle(!toggle)} >
