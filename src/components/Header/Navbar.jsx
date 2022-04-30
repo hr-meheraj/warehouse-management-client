@@ -4,7 +4,7 @@ function Navbar() {
     const [toggle, setToggle] = useState(false);
     return (
         <nav
-            className={`lg:sm:px-[80px] px-[10%] shadow-md flex justify-between items-center py-[15px] sm:py-3`}
+            className={`lg:sm:px-[80px] px-[10%] shadow-md flex justify-between items-center py-[15px] relative sm:py-3`}
         >
             <div className="logo">
                 <Link to="/" className='cursor-pointer'>
@@ -12,7 +12,8 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className={`flex gap-[25px] hidden md:block ${toggle ? ' flex-col w-full h-screen absolute top-0 left-0 right-0 bottom-0 bg-black text-white gap-15px align-items-center' : ' '}`}>
+            <div className={` z-[50] gap-[25px] md:static right-0 left-0 z-[50] transition-all p-[40px] flex  md:flex-row  items-center
+                   ${toggle ? " absolute top-0 bottom-0  gap-[20px] text-white  bg-[#112211ee]  flex-col w-full h-screen " : " absolute top-[-990px]"}`}>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/blogs">
                     Blogs{" "}
                 </NavLink>
@@ -24,11 +25,11 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className="md:hidden cursor-pointer" onClick={() => setToggle(!toggle)} >
+            <div className={`md:hidden cursor-pointer z-100`} onClick={() => setToggle(!toggle)} >
                 {toggle ? (
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-[35px] w-[35px] hover:text-red-900 "
+                        className={`h-[35px] w-[35px] hover:text-pink-800 ${toggle ? "text-white" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -43,7 +44,7 @@ function Navbar() {
                 ) : (
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-[35px] w-[35px] hover:text-red-800"
+                            className={`h-[35px] w-[35px] hover:text-pink-800 ${toggle ? "text-white" : ""}`}
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
