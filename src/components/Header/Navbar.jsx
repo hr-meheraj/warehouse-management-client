@@ -12,7 +12,7 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className={`flex gap-[25px] hidden md:block ${toggle ? ' flex-col w-full h-screen re'}`}>
+            <div className={`flex gap-[25px] hidden md:block ${toggle ? ' flex-col w-full h-screen absolute top-0 left-0 right-0 bottom-0 bg-black text-white gap-15px align-items-center' : ' '}`}>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/blogs">
                     Blogs{" "}
                 </NavLink>
@@ -21,7 +21,7 @@ function Navbar() {
                 </NavLink>
                 <Link onClick={() => setToggle(false)} className="ml-[25px] btn bg-blue-800 text-white" to="/login">
                     Login
-                </Link> 
+                </Link>
             </div>
 
             <div className="md:hidden cursor-pointer" onClick={() => setToggle(!toggle)} >
