@@ -12,15 +12,15 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className={` z-[50] gap-[25px] md:static right-0 left-0 z-[50] transition-all p-[40px] flex  md:flex-row  items-center
-                   ${toggle ? " absolute top-0 bottom-0  gap-[20px] text-white  bg-[#112211ee]  flex-col w-full h-screen " : " absolute top-[-990px]"}`}>
+            <div className={` z-[50] gap-[25px] md:static right-0 left-0 z-[50] justify-center transition-all p-[40px] flex  md:flex-row  
+                   ${toggle ? " absolute top-0 bottom-0  gap-[20px] text-white  bg-[#112211aa]  text-[18px] flex-col w-full h-screen " : " absolute top-[-990px]"}`}>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/blogs">
                     Blogs{" "}
                 </NavLink>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/inventory">
                     Manage Inventory
                 </NavLink>
-                <Link onClick={() => setToggle(false)} className="ml-[25px] btn bg-blue-800 text-white" to="/login">
+                <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
                     Login
                 </Link>
             </div>
