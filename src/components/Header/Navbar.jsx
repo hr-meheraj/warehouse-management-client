@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 function Navbar() {
+
     const [toggle, setToggle] = useState(false);
     return (
         <nav
@@ -12,8 +13,8 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className={` z-[50] gap-[25px] md:static right-0 left-0 z-[50] justify-center transition-all p-[40px] flex  md:flex-row  
-                   ${toggle ? " absolute top-0 bottom-0  gap-[20px] text-white  bg-[#112211aa]  text-[18px] flex-col w-full h-screen " : " absolute top-[-990px]"}`}>
+            <div className={` z-[50] md:gap-[20px] md:static items-center md:h-[100%] md:bg-white md:text-black transition-all  flex  md:flex-row  
+                   ${toggle ? " absolute top-0 bottom-0 gap-[30px] right-0 left-0  justify-center  items-center gap-[20px] text-white  bg-[#000000ed]  text-[18px] flex-col w-full h-screen " : "right-0 left-0  absolute top-[-990px]"}`}>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/blogs">
                     Blogs{" "}
                 </NavLink>
@@ -25,7 +26,7 @@ function Navbar() {
                 </Link>
             </div>
 
-            <div className={`md:hidden cursor-pointer z-100`} onClick={() => setToggle(!toggle)} >
+            <div className={`block z-[100] md:hidden cursor-pointer hover:text-[#00fff0] transition-all`} onClick={() => setToggle(!toggle)} >
                 {toggle ? (
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
