@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {signOut} from 'firebase/auth'
@@ -21,7 +21,7 @@ function Navbar() {
             </div>
 
             <div className={` z-[50] md:gap-[20px] md:static items-center md:h-[100%] md:bg-white md:text-black transition-all  flex  md:flex-row  
-                   ${toggle ? " absolute top-0 bottom-0 gap-[30px] right-0 left-0  justify-center  items-center gap-[20px] text-white  bg-[#000000ed]  text-[18px] flex-col w-full h-screen " : "right-0 left-0  absolute top-[-990px]"}`}>
+                   ${toggle ? " absolute top-0 bottom-0 right-0 left-0  justify-center  items-center gap-[20px] text-white  bg-[#000000ed]  text-[18px] flex-col w-full h-screen " : "right-0 left-0  absolute top-[-990px]"}`}>
                 <NavLink onClick={() => setToggle(false)} className="navLink" to="/blogs">
                     Blogs{" "}
                 </NavLink>
@@ -29,7 +29,12 @@ function Navbar() {
                     Manage Inventory
                 </NavLink>
                 {
-                    user ? <button className='btn bg-blue-800 text-white' onClick={() => signOut(auth)}>Log Out </button> : <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
+                    user &&  ( <NavLink onClick={() => setToggle(false)} className="navLink sm:hidden lg:inline" to="/my-items">
+                    My Items
+                    </NavLink>)
+                }
+                {
+                    user ? <button className='btn bg-blue-800 text-white ' onClick={() => signOut(auth)}>Log Out </button> : <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
                     Login
                 </Link>
                 }

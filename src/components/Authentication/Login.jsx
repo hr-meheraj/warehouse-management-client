@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { useSignInWithGoogle,useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import {toast, Toaster} from 'react-hot-toast'
 import auth from '../../Firebase/firebase.config'
@@ -67,8 +67,9 @@ function Login() {
                 (googleLoading || loading) && <Loading/>
             }
             <div className='w-full h-screen flex justify-center mt-[30px]'>
-            <div className='container p-4 h-[80%] mx-auto w-[95%] max-w-[720px] shadow-lg rounded-md '>
+            <div className='container p-4  mx-auto w-[95%] max-w-[720px] shadow-lg rounded-md '>
                <form onSubmit={handleLoginWithEmail}>
+               <h2 className='text-center text-xl sm:text-2xl text-blue-800 py-4  font-semibold'>LOGIN YOUR ACCOUNT </h2>
                  <label htmlFor="email" className='w-full block my-2'>Email : </label>
                 <input className='py-2 px-4 w-full block my-[15px] rounded-md shadow-md' required placeholder='enter your email'  id='email' type='email' name='email'/>
                 <br/>
@@ -84,7 +85,7 @@ function Login() {
                         <div className='w-[40%] h-[2px] bg-gray-400'></div>
                     </div>
                 </form>
-            <button onClick={handleSignWithGoogle} className='btn bg-blue-800 w-full block text-white my-[15px]'>Sign with Google</button>
+            <button onClick={handleSignWithGoogle} className='mb-[30px] btn bg-blue-800 w-full block text-white my-[15px]'>Sign with Google</button>
            </div>
           </div>
         </div>
