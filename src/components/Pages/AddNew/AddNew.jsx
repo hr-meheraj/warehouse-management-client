@@ -1,10 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import auth from '../../../Firebase/firebase.config';
 import axios from 'axios'
+import {toast, Toaster} from 'react-hot-toast'
+import Loading from '../../Shared/Loading';
 function AddNew() {
     const [user, loading] = useAuthState(auth);
-    const handleProductSubmitToAdd = (event) => {
+    const [postLoading, setPostLoading] = useState(false);
+    const handleProductSubmitToAdd =async  (event) => {
         event.preventDefault();
         const title = event.target.title.value;
         const url = event.target.url.value;
@@ -15,13 +18,29 @@ function AddNew() {
         const productsInfo = {
             title, url, email : user.email, description, sellerName, quantity,price
         }
-        axios.post('https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory', {
-            ...productsInfo
-        }).then( res => console.log(res))
-        .catch( err => console.log(err));
+        try{
+            setPostLoading(true);
+           await axios.post('https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory', {
+                ...productsInfo
+           });
+            toast.success("Successfully Post Product");
+            event.target.reset();
+            
+        }catch(err){
+            toast.error("Somethig went wrong to Post product");
+        }finally{
+            setPostLoading(false);
+        }
     }
     return (
         <div className=''>
+            {
+                (loading || postLoading) && <Loading/>
+            }
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             <div className='container mt-[40px] w-[95%] mx-auto max-w-[720px] bg-white rounded-md shadow-lg'>
                 <form className='w-full p-4' onSubmit={handleProductSubmitToAdd}>
                     <input type='text' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-full block shadow-sm ' required placeholder='Enter your title ' name='title' />
