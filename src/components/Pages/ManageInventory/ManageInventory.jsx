@@ -113,7 +113,7 @@ function ManageInventory() {
                                   </Link>
                                   <button
                                       onClick={() => handleDelete(_id)}
-                                      class="inline-flex items-center py-2 px-3 text-sm font-medium text-center ml-3 text-white bg-red-700 rounded-lg hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                      class="inline-flex items-center py-2  px-3 text-sm font-medium text-center ml-3 text-white bg-red-700 rounded-lg hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                   >
                                       Delete
                                   </button>
@@ -127,7 +127,7 @@ function ManageInventory() {
                 {
                     count && [...Array(count).keys()].map(each => {
                         return (
-                            <button onClick={() => setPage(each)} className={`py-2 px-4 shadow-sm transition-all hover:bg-blue-900 ${each === page ? "bg-blue-800 text-white " : ""}`}>{each + 1} </button>
+                            <button onClick={() => setPage(each)} className={`shadow-lg py-2 px-4  transition-all hover:bg-blue-900 ${each === page ? "bg-blue-800 text-white " : ""}`}>{each + 1} </button>
                         )
                     })
                 }
