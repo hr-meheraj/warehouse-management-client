@@ -23,13 +23,24 @@ function App() {
                         <ManageInventory/>
                     </RequireAuth>
                 }/>
-                <Route path='/inventory/:id' element={<UpdateProducts/>}/>
+                <Route path='/inventory/:id' element={
+                    <RequireAuth>
+                     <UpdateProducts/>
+                     </RequireAuth>
+
+                }/>
                 <Route path='/register' element={<Register/>}/>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/reset-password' element={<ResetPassword />} />
-                <Route path='/add-new' element={<AddNew />} />
+                <Route path='/add-new' element={
+                    <RequireAuth><AddNew /></RequireAuth>
+                } />
                 <Route path='/blogs' element={<Blogs/>} />
-                <Route path='my-items' element={<MyItem/>}/>
+                <Route path='my-items' element={
+                    <RequireAuth>
+                        <MyItem />
+                    </RequireAuth>
+                }/>
                 <Route path='*' element={ <NotFound/>}/>
             </Routes>
         </div>
