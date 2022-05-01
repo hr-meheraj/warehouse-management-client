@@ -18,7 +18,7 @@ function Inventories() {
           return (
             <div key={_id} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
               <img
-                class="rounded-t-lg"
+                class="rounded-t-lg w-[100%]"
                 src={url}
                 alt={title}
               />

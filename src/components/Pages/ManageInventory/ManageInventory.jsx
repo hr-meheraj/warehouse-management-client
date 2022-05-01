@@ -7,6 +7,7 @@ function ManageInventory() {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
     const [count, setCount] = useState(0);
+    const [itemsFound, setItemsFound] = useState(0);
     const [size, setSize] = useState(6); 
     const [isDelete, setIsDelete] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -26,6 +27,7 @@ function ManageInventory() {
         try{
             const res = await axios.get(`https://mern-stack-inventory-management.hrmeheraj.repl.co/productsCount`)
             const data = await res.data.count;
+            setItemsFound(data);
             const page = Math.ceil(data / size);
             setCount(page);
         }catch(err){
@@ -64,9 +66,15 @@ function ManageInventory() {
                 loading && <Loading/>
             }
             <div className='text-center my-[30px]'>
-            <h2 className='py-3 text-blue-800'> Do you want to Add new Item? </h2>  
+            <h2 className='py-3 text-3xl text-blue-800'> Do you want to Add new Item? </h2>  
             <Link to='/add-new' className='btn bg-blue-700 text-white rounded-md hover:bg-blue-900'>Add New Item </Link>
             </div>
+           <div className='container mx-auto text-center w-[95%]'>
+           <br/>
+            <h3 className='text-2xl text-blue-700 mb-3'>Total Inventor Items Found : {itemsFound}</h3>
+            <hr/>
+            <br/>
+           </div>
             <div className='container w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]'>
               {
                     products.map(eachProducts => {
@@ -74,7 +82,7 @@ function ManageInventory() {
                       return(
                           <div key={_id} class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                               <img
-                                  class="rounded-t-lg"
+                                  class="rounded-t-lg w-[100%]"
                                   src={url}
                                   alt={title}
                               />
@@ -131,7 +139,7 @@ function ManageInventory() {
                         )
                     })
                 }
-                <select onChange={handleChangeOption}>
+                <select onChange={handleChangeOption} className='ml-[15px]'>
                     <option value="6">6</option>
                     <option default value="10">
                         10
@@ -144,3 +152,4 @@ function ManageInventory() {
 }
 
 export default ManageInventory
+
