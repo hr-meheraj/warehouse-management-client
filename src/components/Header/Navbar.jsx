@@ -34,6 +34,11 @@ function Navbar() {
                     </NavLink>)
                 }
                 {
+                    user && (<NavLink onClick={() => setToggle(false)} className="navLink sm:hidden lg:inline" to="/add-new">
+                        Add Item
+                    </NavLink>)
+                }
+                {
                     user ? <button className='btn bg-blue-800 text-white ' onClick={() => signOut(auth)}>Log Out </button> : <Link onClick={() => setToggle(false)} className="ml-[20px] btn text-center bg-blue-800 text-white" to="/login">
                     Login
                 </Link>
