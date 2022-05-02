@@ -5,7 +5,10 @@
     background: linear-gradient(241deg, #000000eb, transparent);
 } */
 .blog{
-     font-size: 17px;
+    font-size: 17px;
     font-weight: 300;
     line-height: 30px;
+}
+.sub-form{
+    background: linear-gradient(45deg, #0d060e, #1d1631fa);
 }

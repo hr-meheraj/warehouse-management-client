@@ -27,7 +27,7 @@ const Blog = () => {
     },[id])
     return(
         <div className='max-w-[720px] w-[95%] mx-auto mt-[40px] mb-[80px]'>
-            <div className='fixed top-[100px] left-[50px] md:left-[200px] cursor-pointer w-[60px] h-[60px] rounded-full hover:text-yellow-500 trasition-all ' onClick={handleNavigate}>
+            <div className='fixed top-[64px]  md:top-[100px] left-[10px] md:left-[200px] cursor-pointer w-[60px] h-[60px] rounded-full hover:text-yellow-500 trasition-all ' onClick={handleNavigate}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 hover:text-yellow-500 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
 </svg>

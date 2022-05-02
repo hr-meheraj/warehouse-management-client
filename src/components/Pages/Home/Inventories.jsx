@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Shared/Loading";
+import {useNavigate} from 'react-router-dom'
 function Inventories() {
-    const [data, loading, err] = useFetch('https://mern-stack-inventory-management.hrmeheraj.repl.co/products?size=6&page=0')
+    const [data, loading, err] = useFetch('https://mern-stack-inventory-management.hrmeheraj.repl.co/products?size=6&page=0');
+    const navigate = useNavigate();
+    const navigateInventory = () => {
+        navigate('/inventory');
+    }
     return (
         <div>
             {
@@ -61,6 +66,9 @@ function Inventories() {
                         </div>
                     );
                 })}
+            </div>
+            <div className='text-center'>
+                <button onClick={navigateInventory} className='hover:bg-blue-900 transtioon-all btn bg-blue-700 text-white mt-2 mb-8'>See More Inventories </button>
             </div>
         </div>
     );
