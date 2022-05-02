@@ -1,11 +1,16 @@
 import React,{useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Loading from '../../Shared/Loading';
 const Blog = () => {
     const {id } = useParams();
+    const navigate = useNavigate();
     const [loading,setLoading] = useState(false);
     const [blog, setBlog] = useState({});
+    const handleNavigate = () => {
+        navigate(-1);
+    }
     const getBlog = async (blogId) => {
         try{
             setLoading(true);
@@ -21,13 +26,18 @@ const Blog = () => {
         getBlog(id);
     },[id])
     return(
-        <div className='max-w-[720px] w-[95%] mx-auto mt-[40px]'>
+        <div className='max-w-[720px] w-[95%] mx-auto mt-[40px] mb-[80px]'>
+            <div className='fixed top-[100px] left-[50px] md:left-[200px] cursor-pointer w-[60px] h-[60px] rounded-full hover:text-yellow-500 trasition-all ' onClick={handleNavigate}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 hover:text-yellow-500 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+</svg>
+             </div>
             {
                 loading && <Loading/>
             }
             <img className='rounded-md w-full block mb-3' src={blog.imgUrl}/>
             <h2 className='text-2xl mb-3'>{blog?.question}</h2>
-            <p className='text-gray-700 mb-3'>{blog.answer}</p>
+            <p className='text-gray-700 mb-3 blog'>{blog.answer}</p>
             <span className='mb-3 font-semibold'> Author : {blog.author}</span>
             <p className='flex gap-[15px]'> Author Email : 
                 <a href={`mailto:${blog.email}`}>
