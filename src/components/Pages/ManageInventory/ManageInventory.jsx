@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import useFetch from '../../../Hooks/useFetch'
+// import useFetch from '../../../Hooks/useFetch'
+import { confirm } from "react-confirm-box";
 import axios from 'axios'
 import Loading from '../../Shared/Loading';
 function ManageInventory() {
@@ -49,8 +50,8 @@ function ManageInventory() {
         );
     }, [size, page, isDelete]);
 
-    const handleDelete = id => {
-        const procced = window.confirm("Do you want to Delete this Item?");
+    const handleDelete = async id => {
+        const procced = await window.confirm("Do you want to Delete this Item?");
         if (procced) {
             axios.delete(`https://mern-stack-inventory-management.hrmeheraj.repl.co/product/${id}`)
                 .then(res => {
@@ -78,9 +79,9 @@ function ManageInventory() {
             <div className='container w-[95%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]'>
                 {
                     products.map(eachProducts => {
-                        const { _id, price, email, title, description, url, quantity, sellerName } = eachProducts;
+                        const { _id, price, title, description, url, quantity, sellerName } = eachProducts;
                         return (
-                            <div key={_id} className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                            <div key={_id} className="max-w-sm card bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                                 <img
                                     className="rounded-t-lg w-[100%]"
                                     src={url}

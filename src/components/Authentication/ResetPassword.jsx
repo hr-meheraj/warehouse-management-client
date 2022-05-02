@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
-import toast, { Toaster } from 'react-hot-toast';
+import  { toast } from 'react-hot-toast';
 import auth from '../../Firebase/firebase.config';
 function ResetPassword() {
     const [email, setEmail] = useState("");
-    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(
         auth
     );
     const handleEmailChange = (e) => {
@@ -32,10 +32,6 @@ function ResetPassword() {
                 <input type='email' required onChange={handleEmailChange} placeholder='enter your email to reset' className='rounded-md shadow-lg py-2 px-4 font-semibold block w-full' /><br />
                 <input value="Reset Password" type='submit' className='btn bg-blue-800 block w-full rounded-md shadow-lg cursor-pointer hover:bg-blue-900' />
             </form>
-            <Toaster
-                position="top-right"
-                reverseOrder={false}
-            />
         </div>
     )
 }

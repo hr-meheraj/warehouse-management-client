@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { useSignInWithGoogle,useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import {toast, Toaster} from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 import auth from '../../Firebase/firebase.config'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
 import Loading from '../Shared/Loading'
@@ -60,9 +60,7 @@ function Login() {
     }, [error])
     return (
         <div>
-            <Toaster
-            position='top-right'
-            />
+
             {
                 (googleLoading || loading) && <Loading/>
             }

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import auth from '../../../Firebase/firebase.config';
 import axios from 'axios'
-import {toast, Toaster} from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 import Loading from '../../Shared/Loading';
 function AddNew() {
     const [user, loading] = useAuthState(auth);
@@ -15,8 +15,9 @@ function AddNew() {
         const description = event.target.description.value;
         const quantity = event.target.quantity.value;
         const price = event.target.price.value;
+        const email = await user.email;
         const productsInfo = {
-            title, url, email : user.email, description, sellerName, quantity,price
+            title, url, email , description, sellerName, quantity,price
         }
         try{
             setPostLoading(true);
@@ -37,10 +38,6 @@ function AddNew() {
             {
                 (loading || postLoading) && <Loading/>
             }
-            <Toaster
-                position="top-center"
-                reverseOrder={false}
-            />
             <div className='container mt-[40px] w-[95%] mx-auto max-w-[720px] bg-white rounded-md shadow-lg'>
                 <form className='w-full p-4' onSubmit={handleProductSubmitToAdd}>
                     <input type='text' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-full block shadow-sm ' required placeholder='Enter your title ' name='title' />

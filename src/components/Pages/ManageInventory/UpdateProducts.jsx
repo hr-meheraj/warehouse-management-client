@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import toast, { Toaster } from 'react-hot-toast';
+import {toast } from 'react-hot-toast';
 import Loading from '../../Shared/Loading';
+import useDynamicTitle from '../../../Hooks/useDynamicTitle';
 function UpdateProducts() {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const [reStockId, setRestockId] = useState(null);
     const [loading, setLoading] = useState(false);
     const [showForm, setShowForm] = useState(false);
+    useDynamicTitle(product.title);
     const getApi = async _ => {
         try {
             setLoading(true);
@@ -76,10 +78,7 @@ function UpdateProducts() {
             {
                 loading && <Loading />
             }
-            <Toaster
-                position="top-right"
-                reverseOrder={false}
-            />
+            
             <div className='container mx-auto max-w-[720px] w-[95%] mt-[25px]'>
                 <img src={product?.url} className='w-[100%] rounded-md mb-3' alt={product?.title} />
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">

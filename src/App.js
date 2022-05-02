@@ -12,9 +12,15 @@ import NotFound from './components/Pages/NotFound/NotFound';
 import AddNew from './components/Pages/AddNew/AddNew';
 import Blogs from './components/Pages/Blogs/Blogs';
 import UpdateProducts from './components/Pages/ManageInventory/UpdateProducts';
+import { Toaster } from 'react-hot-toast'
 function App() {
     return (
         <div>
+
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
             <Navbar/>
             <Routes>
                 <Route path='/' element={<Home/>}/>

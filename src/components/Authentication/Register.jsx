@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Toaster, toast} from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
 import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
 import auth from '../../Firebase/firebase.config';
@@ -54,15 +54,22 @@ function Register() {
             setUserInfo({...userInfo, confirmPassword : ""})
         }
     }
-    const handleRegisterSubmit = e => {
+    const handleRegisterSubmit =  e => {
         e.preventDefault();
         if(userInfo.email && userInfo.password === userInfo.confirmPassword){
-            createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+             createUserWithEmailAndPassword(userInfo.email, userInfo.password);
             console.log(user);
-            toast(`I have send a verification link to you email Address :  , 
-           Please Check out inbox, if you not found in inbox please check
-         SPAM Folder. 
-         Note : Until You have not verify you email you can't be login `, {duration : 6000})
+            toast((t) => (
+                <span>
+                    We Have sent <b>Verification Link</b>
+                    to you email address.
+                    <span className='text-blue-600 font-semibold'>Please Verify you email  </span>
+                    <button onClick={() => toast.dismiss(t.id)}>
+                        Dismiss
+                 </button>
+                </span>
+            )
+            );
          if(createErr?.code){   
             toast.success("SuccessFully Created")
          }
@@ -137,10 +144,6 @@ function Register() {
                  <p className='py-2 '>Already have an Account? <Link to='/login' className='text-blue-800'>Login</Link></p> 
                  <button type='submit' className='btn mb-[30px] mt-[25px] block bg-pink-900 w-full hover:bg-blue-900'>REGISTER</button>
              </form>
-        <Toaster
-        position="top-right"
-        reverseOrder={false}
-        />
      </div>
     )
 }

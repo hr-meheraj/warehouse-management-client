@@ -16,7 +16,7 @@ function Inventories() {
                 {data.map((each) => {
                     const { _id, price, title, description, quantity, sellerName, url } = each;
                     return (
-                        <div key={_id} className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div key={_id} className="card max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <img
                                 className="rounded-t-lg w-[100%]"
                                 src={url}
