@@ -44,7 +44,7 @@ function AddNew() {
                     <input type='url' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-full block shadow-sm' required placeholder='Paste valid Image URL here ' name='url'/>
                     <div className='flex gap-[15px]'>
                      <input type='text' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-8/12 shadow-sm block' required placeholder='Seller Name' name='sellerName'/>
-                     <input type='number' max='20' min='1' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-8/12 block shadow-sm' required placeholder='Quantity' name='quantity'/>
+                     <input type='number' max='1000' min='1' className='bg-[#c19e9e2b] mb-3 py-2 px-4 w-8/12 block shadow-sm' required placeholder='Quantity' name='quantity'/>
                     </div>
                     <input className='bg-[#c19e9e2b] w-full mb-3 block py-2 px-4 shadow-sm ' required type='number' name='price' placeholder='Enter $ Price'/>
                     <textarea name="description" id="" cols="30" className='bg-[#c19e9e2b]  block mb-3 w-full block shadow-sm py-2 px-4' required placeholder='Please enter Description about your products' rows="10"></textarea>

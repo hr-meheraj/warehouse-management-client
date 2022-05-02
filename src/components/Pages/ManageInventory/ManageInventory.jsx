@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // import useFetch from '../../../Hooks/useFetch'
-import { confirm } from "react-confirm-box";
+// import { confirm } from "react-confirm-box";
 import axios from 'axios'
 import Loading from '../../Shared/Loading';
 function ManageInventory() {
@@ -17,7 +17,6 @@ function ManageInventory() {
             setLoading(true);
             const response = await axios.get(url);
             setProducts(response.data);
-            console.log(response.data);
         } catch (err) {
             console.log("Err here ", err);
         } finally {

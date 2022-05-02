@@ -4,33 +4,33 @@ function Footer() {
     const date = new Date().getFullYear();
     return (
         <div className="mt-[120px] bg-[#112222]">
-            <div className="container mx-auto max-w-[720px] w-[95%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <div className="p-4 ">
-                    <h2 className="text-2xl text-white">MANAGMENT LOGO</h2>
+            <div className="container mx-auto  pt-[50px] gap-[30px] w-[95%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div className=" ">
+                    <h2 className="text-2xl text-white mb-3">MANAGMENT LOGO</h2>
                     <p className="text-gray-400">
                         Get More productive efficient manage your product build with simple
                         easy to use. Moderate Version and Authentication. Keeping Up.
           </p>
                 </div>
-                <div className="p-4">
-                    <h2 className="text-xl text-gray-300"> Popular Link : </h2>
-                    <hr />
+                <div className="">
+                    <h2 className="text-xl text-gray-300 mb-3"> Popular Link : </h2>
+                    <hr className='my-2' />
                     <ul className="list-disc text-blue-300">
-                        <li>
+                        <li className='mb-3'>
                             {' '}
                             <Link to="/add-new"> ADD ITEM </Link>
                         </li>
-                        <li>
+                        <li className='mb-3'>
                             {' '}
                             <Link to="/inventory"> MANAGE </Link>
                         </li>
-                        <li>
+                        <li className='mb-3'>
                             {' '}
                             <Link to="/blogs"> BLOGS</Link>
                         </li>
                     </ul>
                 </div>
-                <div className="flex justify-around">
+                <div className="flex w-[70%] mx-auto justify-around">
                     <a href="https://facebook.com/hr.meheraj.50" target="_blank" rel="noreferrer">
                         <svg
                             className="w-6 h-6 text-blue-500 fill-current"

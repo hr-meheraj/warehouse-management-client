@@ -11,6 +11,7 @@ import ResetPassword from './components/Authentication/ResetPassword';
 import NotFound from './components/Pages/NotFound/NotFound';
 import AddNew from './components/Pages/AddNew/AddNew';
 import Blogs from './components/Pages/Blogs/Blogs';
+import Blog from './components/Pages/Blogs/Blog';
 import UpdateProducts from './components/Pages/ManageInventory/UpdateProducts';
 import { Toaster } from 'react-hot-toast'
 function App() {
@@ -41,7 +42,8 @@ function App() {
                 <Route path='/add-new' element={
                     <RequireAuth><AddNew /></RequireAuth>
                 } />
-                <Route path='/blogs' element={<Blogs/>} />
+                <Route path='/blogs' element={<Blogs />} />
+                <Route path='/blogs/:id' element={<Blog/>}/>
                 <Route path='my-items' element={
                     <RequireAuth>
                         <MyItem />
