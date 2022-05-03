@@ -16,7 +16,7 @@ const Blog = () => {
         try {
             setLoading(true);
             const data = await axios.get(
-                `https://mern-stack-inventory-management.hrmeheraj.repl.co/blogs/${blogId}`
+                `https://mern-inventory-manager-api.herokuapp.com/blogs/${blogId}`
             );
             setBlog(data.data);
         } catch (err) {

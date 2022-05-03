@@ -1,5 +1,5 @@
 .banner{
-        background: linear-gradient(347deg, #000000fa, #0a0b0bd1);
+         background: #1f2937;
 }
 /* .card {
     background: linear-gradient(241deg, #000000eb, transparent);
@@ -9,6 +9,15 @@
     font-weight: 300;
     line-height: 30px;
 }
-.sub-form{
+/* .sub-form{
     background: linear-gradient(45deg, #0d060e, #1d1631fa);
+} */
+.sub-form-main{
+     padding: 5%;
+    /* background: linear-gradient(45deg, #3c5b95ed, #00ffdc61); */
+    background: #1f2937;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }

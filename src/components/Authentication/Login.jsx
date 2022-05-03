@@ -14,18 +14,18 @@ function Login() {
   const [prevAuthUser, prevAuthLoading] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+    useDynamicTitle("Login ");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const handleSignWithGoogle = () => {
     signInWithGoogle();
   };
-    useDynamicTitle("Login ");
   if (googleUser) {
     const data = { email: googleUser.user.email };
     console.log("Email : ", data);
     const url =
-      "https://mern-stack-inventory-management.hrmeheraj.repl.co/login";
+      "https://mern-inventory-manager-api.herokuapp.com/login";
     fetch(url, {
       method: "POST",
       headers: {
@@ -65,7 +65,7 @@ function Login() {
     const password = e.target.password.value;
     await signInWithEmailAndPassword(email, password);
     const { data } = await axios.post(
-      "https://mern-stack-inventory-management.hrmeheraj.repl.co/login",
+      "https://mern-inventory-manager-api.herokuapp.com/login",
       { email }
     );
     localStorage.setItem("accessToken", data.accessToken);
@@ -73,9 +73,9 @@ function Login() {
     navigate(from, { replace: true });
   };
 
-  if (prevAuthUser) {
-    navigate(from, { replace: true });
-  }
+//   if (prevAuthUser) {
+//     navigate(from, { replace: true });
+//   }
   useEffect(() => {
     const finalError = error;
     if (finalError) {

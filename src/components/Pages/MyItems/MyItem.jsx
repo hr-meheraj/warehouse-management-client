@@ -12,7 +12,7 @@ function MyItem() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const url = `https://mern-stack-inventory-management.hrmeheraj.repl.co/productsByEmail?email=${user.email}`;
+  const url = `https://mern-inventory-manager-api.herokuapp.com/productsByEmail?email=${user.email}`;
   // const [data, loading, err, setData] = useFetch();
 
   const getApi = async () => {
@@ -43,7 +43,7 @@ function MyItem() {
     if (procced) {
       await axios
         .delete(
-          `https://mern-stack-inventory-management.hrmeheraj.repl.co/product/${id}`
+          `https://mern-inventory-manager-api.herokuapp.com/product/${id}`
         )
         .then((res) => {
           console.log(res);

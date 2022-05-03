@@ -15,7 +15,7 @@ function UpdateProducts() {
         try {
             setLoading(true);
             const res = await axios.get(
-                `https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory/${id}`
+                `https://mern-inventory-manager-api.herokuapp.com/inventory/${id}`
             );
             const data = await res.data;
             setProduct(data);
@@ -34,7 +34,7 @@ function UpdateProducts() {
         try {
             setLoading(true);
             await axios.put(
-                `https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory/${id}`,
+                `https://mern-inventory-manager-api.herokuapp.com/inventory/${id}`,
                 {
                     quantity: newQuantity,
                 }
@@ -62,7 +62,7 @@ function UpdateProducts() {
         try {
             setLoading(true);
             await axios.put(
-                `https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory/${reStockId}`,
+                `https://mern-inventory-manager-api.herokuapp.com/inventory/${reStockId}`,
                 {
                     quantity: newRestockQuantity,
                 }

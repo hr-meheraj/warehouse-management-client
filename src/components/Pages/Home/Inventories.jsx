@@ -17,7 +17,7 @@ function Inventories() {
             <h2 className="text-center text-blue-800 text-3xl mt-[35px] mb-[20px]">
                 Inventory Items{" "}
             </h2>
-            <div className="w-[95%] mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]">
+            <div className="w-[95%] justify-center mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]">
                 {data.map((each) => {
                     const { _id, price, title, description, quantity, sellerName, url } =
                         each;
@@ -73,7 +73,7 @@ function Inventories() {
             <div className="text-center">
                 <button
                     onClick={navigateInventory}
-                    className="hover:bg-blue-900 transtioon-all btn bg-blue-700 text-white mt-2 mb-8"
+                    className="hover:bg-blue-900 transtioon-all btn bg-blue-700 text-white mt-4 mb-8"
                 >
                     See More Inventories{" "}
                 </button>

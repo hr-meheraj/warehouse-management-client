@@ -30,7 +30,7 @@ function AddNew() {
         try {
             setPostLoading(true);
             await axios.post(
-                "https://mern-stack-inventory-management.hrmeheraj.repl.co/inventory",
+                "https://mern-inventory-manager-api.herokuapp.com/inventory",
                 {
                     ...productsInfo,
                 }

@@ -28,7 +28,7 @@ function ManageInventory() {
     const getPage = async () => {
         try {
             const res = await axios.get(
-                `https://mern-stack-inventory-management.hrmeheraj.repl.co/productsCount`
+                `https://mern-inventory-manager-api.herokuapp.com/productsCount`
             );
             const data = await res.data.count;
             setItemsFound(data);
@@ -49,7 +49,7 @@ function ManageInventory() {
     };
     useEffect(() => {
         getApi(
-            `https://mern-stack-inventory-management.hrmeheraj.repl.co/products?size=${size}&page=${page}`
+            `https://mern-inventory-manager-api.herokuapp.com/products?size=${size}&page=${page}`
         );
     }, [size, page, isDelete]);
 
@@ -58,11 +58,12 @@ function ManageInventory() {
         if (procced) {
             axios
                 .delete(
-                    `https://mern-stack-inventory-management.hrmeheraj.repl.co/product/${id}`
+                    `https://mern-inventory-manager-api.herokuapp.com/product/${id}`
                 )
                 .then((res) => {
                     console.log(res);
                     setIsDelete(!isDelete);
+                    setItemsFound(itemsFound - 1);
                 })
                 .catch((err) => console.log(err));
         }
@@ -71,13 +72,13 @@ function ManageInventory() {
         <div className="">
             {loading && <Loading />}
             <div className="text-center my-[30px]">
-                <h2 className="py-3 text-3xl text-blue-800">
+                <h2 className="py-3 mb-8 text-3xl text-blue-800">
                     {" "}
           Do you want to Add new Item?{" "}
                 </h2>
                 <Link
                     to="/add-new"
-                    className="btn bg-blue-700 text-white rounded-md hover:bg-blue-900"
+                    className="btn bg-blue-700 text-white rounded-md mt-[25px] hover:bg-blue-900"
                 >
                     Add New Item{" "}
                 </Link>
@@ -85,7 +86,7 @@ function ManageInventory() {
             <div className="container mx-auto text-center w-[95%]">
                 <br />
                 <h3 className="text-2xl text-blue-700 mb-3">
-                    Total Inventor Items Found : {itemsFound}
+                    Total Inventory Items Found : {itemsFound}
                 </h3>
                 <hr />
                 <br />

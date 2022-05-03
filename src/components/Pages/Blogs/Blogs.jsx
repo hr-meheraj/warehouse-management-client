@@ -6,7 +6,7 @@ import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 function Blogs() {
     const [blogs, loading, err] = useFetch(
-        "https://mern-stack-inventory-management.hrmeheraj.repl.co/blogs"
+        "https://mern-inventory-manager-api.herokuapp.com/blogs"
     );
     useDynamicTitle("Explore All Blogs");
     return (

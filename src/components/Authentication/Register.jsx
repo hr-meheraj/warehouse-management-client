@@ -102,12 +102,11 @@ export default function Register() {
             try {
                 await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
                 const { data } = await axios.post(
-                    "https://mern-stack-inventory-management.hrmeheraj.repl.co/login",
+                    "https://mern-inventory-manager-api.herokuapp.com/login",
                     { email: userInfo.email }
                 );
-                localStorage.setItem("accessToken", data.accessToken);
-                console.log(data);
-                console.log(user);
+                const token = data.accessToken;
+                localStorage.setItem("accessToken", token);
                 toast((t) => (
                     <span>
                         We Have sent <b>Verification Link</b>
