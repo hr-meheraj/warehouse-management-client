@@ -4,10 +4,10 @@ import auth from "../../Firebase/firebase.config";
 import Loading from "../Shared/Loading";
 
 function RequireAuth({ children }) {
-    let [user,loading] = useAuthState(auth);
+    let [user, loading] = useAuthState(auth);
     let location = useLocation();
-    if(loading){
-        return <Loading/>
+    if (loading) {
+        return <Loading />;
     }
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
