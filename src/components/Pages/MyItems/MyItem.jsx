@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import {signOut} from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase/firebase.config';
-import useFetch from '../../../Hooks/useFetch'
+// import useFetch from '../../../Hooks/useFetch';
 import Loading from '../../Shared/Loading';
-import {Link} from 'react-router-dom'
-import axios from 'axios'
+import { Link, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 function MyItem() {
-    const [user, authLoading] = useAuthState(auth); 
-    const [data, loading, err, setData] = useFetch(`https://mern-stack-inventory-management.hrmeheraj.repl.co/productsByEmail?email=${user.email}`);
+    const [user, authLoading] = useAuthState(auth);
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState([]);
+    const navigate = useNavigate();
+    const url = `https://mern-stack-inventory-management.hrmeheraj.repl.co/productsByEmail?email=${user.email}`; 
+    // const [data, loading, err, setData] = useFetch();
+
+    const getApi = async () => {
+        try{
+            setLoading(true);
+            const {data} = await axios.get(url, {
+                headers : {
+                    authorization : `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            });
+            setData(data);
+        }catch(err){
+            console.log('err from the my items', err);
+            if(err.response.status === 403 || err.response.status === 401){
+                signOut(auth);
+                navigate('/login');
+            }
+        }finally{
+            setLoading(false);
+        }
+    }
+    useEffect(() => {
+        getApi();
+    }, [url])
 
     const handleDeletePost = async id => {
         const procced = await window.confirm("Do you want to Delete this Item?");

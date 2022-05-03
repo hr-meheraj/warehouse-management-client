@@ -3,9 +3,16 @@ import {toast} from 'react-hot-toast'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
 import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
 import auth from '../../Firebase/firebase.config';
+import axios from 'axios'
 import Loading from '../Shared/Loading';
 
-function Register() {
+export default function Register() {
+
+     // Navigate Previous Tab if user Registation
+   
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const [userInfo , setUserInfo]= useState({
         email : "",
         password : "" ,
@@ -22,72 +29,8 @@ function Register() {
         loading,
         createErr,
       ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
-    const handleEmailChange = (e) => {
-        const emailRegEx = /\S+@\S+\.\S+/;
-        const validate = emailRegEx.test(e.target.value);
-        if(validate){
-            setUserInfo({...userInfo, email : e.target.value});
-            setUserInfoErr({...userInfoErr, emailErr : ""});
-        }else{
-            setUserInfoErr({...userInfoErr, emailErr : "Your Email is not Valid" });
-            setUserInfo({...userInfo, email : ""})
-        }
-    }
-    const handlePasswordChange = e => {
-        const passwordRegEx =  /.{6,}/;
-        const validatePass = passwordRegEx.test(e.target.value);
-        if(validatePass){
-            setUserInfo({...userInfo, password : e.target.value});
-            setUserInfoErr({...userInfoErr, passwordErr : ""});
-        }else{
-            setUserInfoErr({...userInfoErr, passwordErr : "Your must have to be 6 characters"});
-            setUserInfo({...userInfo , password : ""});
-        }
-    }
-    const handleConfirmPassword = (e) => {
-        const pass = e.target.value;
-        if(pass === userInfo.password){
-            setUserInfo({ ...userInfo,  confirmPassword : e.target.value });
-            setUserInfoErr({ ...userInfoErr, passwordErr: "" });
-        }else{
-            setUserInfoErr({...userInfoErr, passwordErr : "Password Not Match"});
-            setUserInfo({...userInfo, confirmPassword : ""})
-        }
-    }
-    const handleRegisterSubmit =  e => {
-        e.preventDefault();
-        if(userInfo.email && userInfo.password === userInfo.confirmPassword){
-             createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-            console.log(user);
-            toast((t) => (
-                <span>
-                    We Have sent <b>Verification Link</b>
-                    to you email address.
-                    <span className='text-blue-600 font-semibold'>Please Verify you email  </span>
-                    <button onClick={() => toast.dismiss(t.id)}>
-                        Dismiss
-                 </button>
-                </span>
-            )
-            );
-         if(createErr?.code){   
-            toast.success("SuccessFully Created")
-         }
-        }
-        if(loading){
-            return <Loading/>
-        }
-    }
-    // Navigate Previous Tab if user Registation
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
-
-    if(user) {
-        navigate(from, { replace: true });
-     }
-
-    useEffect(() => {
+    
+       useEffect(() => {
         const finalError = createErr;
         if(finalError){
             switch(finalError?.code){
@@ -116,6 +59,77 @@ function Register() {
             }
         }
     }, [createErr])
+
+    // handling Email Change 
+    const handleEmailChange = (e) => {
+        const emailRegEx = /\S+@\S+\.\S+/;
+        const validate = emailRegEx.test(e.target.value);
+        if(validate){
+            setUserInfo({...userInfo, email : e.target.value});
+            setUserInfoErr({...userInfoErr, emailErr : ""});
+        }else{
+            setUserInfoErr({...userInfoErr, emailErr : "Your Email is not Valid" });
+            setUserInfo({...userInfo, email : ""})
+        }
+    }
+
+    // Password Change 
+    const handlePasswordChange = e => {
+        const passwordRegEx =  /.{6,}/;
+        const validatePass = passwordRegEx.test(e.target.value);
+        if(validatePass){
+            setUserInfo({...userInfo, password : e.target.value});
+            setUserInfoErr({...userInfoErr, passwordErr : ""});
+        }else{
+            setUserInfoErr({...userInfoErr, passwordErr : "Your must have to be 6 characters"});
+            setUserInfo({...userInfo , password : ""});
+        }
+    }
+
+    const handleConfirmPassword = (e) => {
+        const pass = e.target.value;
+        if(pass === userInfo.password){
+            setUserInfo({ ...userInfo,  confirmPassword : e.target.value });
+            setUserInfoErr({ ...userInfoErr, passwordErr: "" });
+        }else{
+            setUserInfoErr({...userInfoErr, passwordErr : "Password Not Match"});
+            setUserInfo({...userInfo, confirmPassword : ""})
+        }
+    }
+
+    const handleRegisterSubmit =async  e => {
+        e.preventDefault();
+        if(userInfo.email && userInfo.password === userInfo.confirmPassword){
+            try{
+                await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+              const { data } = await axios.post('https://mern-stack-inventory-management.hrmeheraj.repl.co/login', {email : userInfo.email});
+             localStorage.setItem("accessToken", data.accessToken);
+            console.log(data);
+            console.log(user);
+               toast((t) => (
+                   <span>
+                       We Have sent <b>Verification Link</b>
+                       to you email address.
+                       <span className='text-blue-600 font-semibold'>Please Verify you email  </span>
+                       <button onClick={() => toast.dismiss(t.id)}>
+                           Dismiss
+                    </button>
+                   </span>
+               )
+               );
+               navigate(from, { replace: true });
+            }catch(err){
+                console.log("Err from REgister page", err);
+            } finally {
+                
+            }
+        }
+    }
+    if (loading) {
+        return <Loading />
+    }
+
+
     return (
         <div className='h-screen w-full flex justify-center mt-[30px]'>
              <form onSubmit={handleRegisterSubmit} className='p-4 mx-auto w-[95%] max-w-[720px] shadow-lg rounded-md  container'>
@@ -148,4 +162,4 @@ function Register() {
     )
 }
 
-export default Register
+
