@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useDynamicTitle from '../../../Hooks/useDynamicTitle'
 function NotFound() {
+    useDynamicTitle("Not Found 404 -");
     return (
         <div className='flex justify-center items-center '>
             <div>

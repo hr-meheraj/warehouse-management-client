@@ -5,10 +5,11 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.config";
 import axios from "axios";
 import Loading from "../Shared/Loading";
+import useDynamicTitle from "../../Hooks/useDynamicTitle";
 
 export default function Register() {
     // Navigate Previous Tab if user Registation
-
+    useDynamicTitle("Create New Account - Register");
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";

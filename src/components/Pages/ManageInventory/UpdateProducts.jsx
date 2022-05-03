@@ -28,6 +28,7 @@ function UpdateProducts() {
     useEffect(() => {
         getApi();
     }, []);
+    useDynamicTitle(`Update - ${product?.title}`);
     const handleDeliverProduct = async (id) => {
         const newQuantity = parseInt(product.quantity) - 1;
         try {

@@ -9,6 +9,7 @@ import axios from "axios";
 import auth from "../../Firebase/firebase.config";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import Loading from "../Shared/Loading";
+import useDynamicTitle from "../../Hooks/useDynamicTitle";
 function Login() {
   const [prevAuthUser, prevAuthLoading] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -19,6 +20,7 @@ function Login() {
   const handleSignWithGoogle = () => {
     signInWithGoogle();
   };
+    useDynamicTitle("Login ");
   if (googleUser) {
     const data = { email: googleUser.user.email };
     console.log("Email : ", data);

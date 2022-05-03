@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../Shared/Loading";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 const Blog = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -24,6 +25,7 @@ const Blog = () => {
             setLoading(false);
         }
     };
+    useDynamicTitle(blog?.question);
     useEffect(() => {
         getBlog(id);
     }, [id]);

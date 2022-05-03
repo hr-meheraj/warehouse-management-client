@@ -4,7 +4,9 @@ import auth from "../../../Firebase/firebase.config";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import Loading from "../../Shared/Loading";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 function AddNew() {
+    useDynamicTitle("Add New Product");
     const [user, loading] = useAuthState(auth);
     const [postLoading, setPostLoading] = useState(false);
     const handleProductSubmitToAdd = async (event) => {

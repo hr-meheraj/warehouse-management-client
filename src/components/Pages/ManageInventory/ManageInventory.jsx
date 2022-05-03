@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { confirm } from "react-confirm-box";
 import axios from "axios";
 import Loading from "../../Shared/Loading";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 function ManageInventory() {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
@@ -23,6 +24,7 @@ function ManageInventory() {
             setLoading(false);
         }
     };
+    useDynamicTitle("Manage ");
     const getPage = async () => {
         try {
             const res = await axios.get(

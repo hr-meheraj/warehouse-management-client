@@ -2,11 +2,13 @@ import React from "react";
 import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Shared/Loading";
 import { Link } from "react-router-dom";
+import useDynamicTitle from "../../../Hooks/useDynamicTitle";
 
 function Blogs() {
     const [blogs, loading, err] = useFetch(
         "https://mern-stack-inventory-management.hrmeheraj.repl.co/blogs"
     );
+    useDynamicTitle("Explore All Blogs");
     return (
         <div className="max-w-[720px] w-[95%] mx-auto mt-[40px]">
             {loading && <Loading />}

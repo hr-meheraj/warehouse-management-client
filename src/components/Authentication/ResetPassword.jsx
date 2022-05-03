@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
 import auth from "../../Firebase/firebase.config";
+import useDynamicTitle from "../../Hooks/useDynamicTitle";
 function ResetPassword() {
+    useDynamicTitle("Reset Password");
     const [email, setEmail] = useState("");
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const handleEmailChange = (e) => {
