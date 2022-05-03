@@ -2,31 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import Loading from "../../Shared/Loading";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 function Inventories() {
-    const [data, loading, err] = useFetch('https://mern-stack-inventory-management.hrmeheraj.repl.co/products?size=6&page=0');
+    const [data, loading, err] = useFetch(
+        "https://mern-stack-inventory-management.hrmeheraj.repl.co/products?size=6&page=0"
+    );
     const navigate = useNavigate();
     const navigateInventory = () => {
-        navigate('/inventory');
-    }
+        navigate("/inventory");
+    };
     return (
         <div>
-            {
-                loading && <Loading />
-            }
+            {loading && <Loading />}
             <h2 className="text-center text-blue-800 text-3xl mt-[35px] mb-[20px]">
                 Inventory Items{" "}
             </h2>
             <div className="w-[95%] mx-auto container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px]">
                 {data.map((each) => {
-                    const { _id, price, title, description, quantity, sellerName, url } = each;
+                    const { _id, price, title, description, quantity, sellerName, url } =
+                        each;
                     return (
-                        <div key={_id} className="card max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                            <img
-                                className="rounded-t-lg w-[100%]"
-                                src={url}
-                                alt={title}
-                            />
+                        <div
+                            key={_id}
+                            className="card max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                        >
+                            <img className="rounded-t-lg w-[100%]" src={url} alt={title} />
 
                             <div className="p-5">
                                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -36,7 +36,10 @@ function Inventories() {
                                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                     {description}
                                 </p>
-                                <p className="text-gray-200 font-smibold mb-3"> Seller : {sellerName} </p>
+                                <p className="text-gray-200 font-smibold mb-3">
+                                    {" "}
+                  Seller : {sellerName}{" "}
+                                </p>
                                 <p className="text-pink-600 font-xl font-semibold mb-3">
                                     {" "}
                   Quantity : {quantity}
@@ -67,8 +70,13 @@ function Inventories() {
                     );
                 })}
             </div>
-            <div className='text-center'>
-                <button onClick={navigateInventory} className='hover:bg-blue-900 transtioon-all btn bg-blue-700 text-white mt-2 mb-8'>See More Inventories </button>
+            <div className="text-center">
+                <button
+                    onClick={navigateInventory}
+                    className="hover:bg-blue-900 transtioon-all btn bg-blue-700 text-white mt-2 mb-8"
+                >
+                    See More Inventories{" "}
+                </button>
             </div>
         </div>
     );
