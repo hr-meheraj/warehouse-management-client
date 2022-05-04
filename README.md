@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+## `Welcome to MERN Inventory Website : `
+# Live Site Link here : [View Deployment](https://mern-inventory.web.app/)
+-----------------------------------------------------------------------------
+    This is full Responsive Mobile-Tablet-and-Desktop friendly Website. This is an invenotory management website where the seller creating new account with using Google, Email and Password. IF the seller account successfully create then he can adding new products and if he want he can update products quantity and Restock. He also delete unuseful products from the website. Although there are not set up admin. Here anybody delete products. The next time update it. And the last thing Blog page there are dynamically blogs here loading from database. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Material Uses on this website : 
+    - React 
+    - React Router 
+    - Axios
+    - Firebase 
+    - MongoDB
+    - Node js 
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Some features of this website are : 
+    - Json Web Token (JWT) for Secure Api. This website implement one routes which is my-items page securely. There anybody cann't get data from any rest tester like PostMan. 
+    - Pagination - The manage inventory page is also paginated - here for more products will devided pages. This is very useful to us. Real life usecase most important to adding pagination on any website. 
+    - Not Found Page - if the user wrong route access there will be Not Found page 404. 
+    
+![JWT Logo](https://jwt.io/img/pic_logo.svg)
